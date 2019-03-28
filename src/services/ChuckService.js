@@ -1,9 +1,17 @@
-import Axios from 'axios'
+import Chucknorris from 'chucknorris-io'
 
-const axios = Axios.create({
-    baseURL: 'http://localhost:3000/api'
-})
+class ChuckService{
 
-export default {
- 
-}
+    constructor() {
+        this.client = new Chucknorris ();
+      }
+    
+    // Retrieve a random chuck joke
+    getujMiJocks() {
+        return this.client.getRandomJoke();
+
+    }
+  
+    }
+
+export const chuckService = new ChuckService;

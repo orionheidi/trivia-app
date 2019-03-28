@@ -6,6 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import TriviaApp from './components/TriviaApp'
+import ChuckApp from './components/ChuckApp'
 
 
 Vue.config.productionTip = false
@@ -16,6 +17,7 @@ Vue.use(BootstrapVue)
 const routes = [
   { path: '/', component: TriviaApp },
   { path: '/trivia', component: TriviaApp },
+  { path: '/chuck', component: ChuckApp },
  
 ]
 const router = new VueRouter({
