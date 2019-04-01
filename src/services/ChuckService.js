@@ -1,17 +1,15 @@
-import Chucknorris from 'chucknorris-io'
+import ChuckClient from 'chucknorris-io';
 
-class ChuckService{
+class ChuckService {
+  constructor() {
+    this.client = new ChuckClient();
+  }
 
-    constructor() {
-        this.client = new Chucknorris ();
-      }
-    
-    // Retrieve a random chuck joke
-    getujMiJocks() {
-        return this.client.getRandomJoke();
+  getRandomJoke() {
+    return this.client.getRandomJoke()
+  }
+}
 
-    }
-  
-    }
+const chuckService = new ChuckService();
 
-export const chuckService = new ChuckService;
+export { chuckService as ChuckService } 

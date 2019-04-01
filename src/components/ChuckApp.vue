@@ -1,34 +1,34 @@
+
 <template>
-      <div class="row">
-    <div class="card col-md-4" v-for="jocke in jockes" :key="jocke.id">
-        {{ jocke.url }}
-        {{ jocke.value}}
-    </div>
-      </div>
+  <div class="container">
+    {{ randomJoke}}
+    <!-- <input class="form-control mb-2" type="text" placeholder="Enter Joke Category" @input="setCategory"/>
+     <button @click="updateCategory" class="btn btn-primary">Update category</button> -->
+  </div>
 </template>
 
 <script>
-import {chuckService} from './../services/ChuckService'
-import {store} from '../store/store'
-import { mapGetters } from 'vuex'
-
+import { mapGetters, mapActions } from 'vuex';
+import { store } from './../store';
 export default {
-
-    data() {
-    // return {
-    //   jockes: 'jockes'
-    // };
+  name: 'Chuck',
+  computed: {
+    ...mapGetters({
+      randomJoke: 'getRandomJoke'
+    })
   },
-    computed: {
-    ...mapGetters([
-      'getJockes'
-    ]),
-    },
-
-      beforeRouteEnter(to, from, next) {
-        store.dispatch('fetchJockes',next)
+  methods: {
+    ...mapActions([
+      'fetchRandomJoke'
+    ])
   },
-
-    
+  // created() {
+  //   this.fetchRandomJoke();
+  // },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch('fetchRandomJoke', next);
+    // next();
+  }
 }
 </script>
+ 

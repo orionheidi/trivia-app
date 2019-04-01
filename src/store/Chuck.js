@@ -1,27 +1,28 @@
-import {chuckService} from '../services/ChuckService'
+import { ChuckService } from './../services/ChuckService';
 
 export const Chuck = {
-    state: {
-        jocke:[]
-    },
-    getters: {
-      getJockes(state) {
-        return state.jocke
-      }
-    },
-    mutations: {
-        setJockes(state, jocke) {
-            state.jockes = jocke
-          }
-    },
-    actions: {
-        
-        fetchJockes(store,next) {
-        chuckService.getujMiJocks().then(response => {
-          store.commit('setJockes',response.value)
-        })
-    
+  state: {
+    randomJoke: null
+  },
+  getters: {
+    getRandomJoke(state) {
+      console.log(state.randomJoke.id)
+      return state.randomJoke
     }
-
+  },
+  mutations: {
+    setRandomJoke(state, joke) {
+      console.log(joke)
+      state.randomJoke = joke;
+      console.log(state.randomJoke.id)
     }
-  };
+  },
+  actions: {
+    fetchRandomJoke(store, next) {
+      ChuckService.getRandomJoke().then((joke) => {
+        store.commit('setRandomJoke', joke);
+        next();
+      })
+    }
+  }
+}
