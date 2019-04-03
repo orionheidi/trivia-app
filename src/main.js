@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import TriviaApp from './components/TriviaApp'
 import ChuckApp from './components/ChuckApp'
+import { store } from './store';
 
 
 Vue.config.productionTip = false
@@ -26,6 +27,7 @@ const router = new VueRouter({
 
 
 new Vue({
+  store,
   router,
   mode: 'history',
   render: h => h(App),
